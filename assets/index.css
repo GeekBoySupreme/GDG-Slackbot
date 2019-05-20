@@ -4,7 +4,19 @@ body{
     background:url("https://cdn.dribbble.com/users/121405/screenshots/4360448/final_fantasy1x.png");
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
+    overflow-x:hidden;
 }
+
+/* For mobile phones: */
+#form {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  form {width: 70%;}
+}
+
 
 h1, input::-webkit-input-placeholder, button {
   font-family: 'roboto', sans-serif;
@@ -17,8 +29,7 @@ h1, input::-webkit-input-placeholder, button {
     font-family: 'Roboto', sans-serif;
   background:white;
   box-sizing: border-box;
-  min-width: 400px;
-  width:50%;
+  max-width: 800px;
   margin: 20px auto 0;
   box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
   padding: 40px;
@@ -69,8 +80,32 @@ button {
   color: white;
   margin-left: 0px;
   box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
-  &:hover { 
-    transform: translateY(-3px);
-    box-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
-  }
+  
+}
+
+button:focus
+{
+  outline:none;
+}
+p
+{
+  min-width: 200px;
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    color:rgba(0,0,0,0.5);
+    font-size:17px;
+}
+
+#result
+{
+  color:rgb(230, 190, 16);
+  background:rgba(255, 243, 80, 0.568);
+  width:70%;
+  max-width:400px;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius:4px;
+  padding:10px;
+  transition:0.4s ease;
 }
