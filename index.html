@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post | GDG Kolkata</title>
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="assets/index.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+     function send() {
+        var url = "https://hooks.slack.com/services/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";
+        // There is a message that we would get from the User.
+        var jsonSendingData={
+    "attachments": [
+        {
+            "fallback": "Required plain-text summary of the attachment.",
+            "color": "#f4d142",
+            "pretext": document.getElementById("topic").value,
+            "author_name":  document.getElementById("fullname").value,
+            "author_link":  document.getElementById("authorlink").value,
+            "author_icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4mfYbONCyW7JTfdPCUJk_t78vzD6_hLg-tHDJpI6_TQLOy6VC",
+            "title":  document.getElementById("topic").value,
+            "title_link":  document.getElementById("information_link").value,
+            "text":  document.getElementById("about").value,
+            "fields": [
+                {
+                    "title":  "Timeframe : "+document.getElementById("timeframe").value,
+                    "value":  "Stipend : "+document.getElementById("stipend").value,
+                    "short": false
+                }
+            ],
+            
+        },
+        {
+      "fallback": "Mail at :"+ "mailto:"+document.getElementById("mail").value,
+      "actions": [
+        {
+          "type": "button",
+          "text": "Contact :angel:",
+          "url": "mailto:"+document.getElementById("mail").value
+        }
+      ],
+            "image_url": "./emojis.png",
+            "thumb_url": "./emojis.png",
+            "footer": "GDG Kolkata",
+            "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png"
+    }
+    ]
+};
+        $.post(url, JSON.stringify(jsonSendingData));
+        document.getElementById("result").innerHTML = "Message has been sent successfully!";
+     }
+    </script>
+</head>
+<body>
+
+<div id="form">
+<img src="assets/gdg.png" width="125px" height="100px"/>
+
+<input type="text" id="topic" placeholder="Topic" required/>
+<input type="text" id="fullname" placeholder="Full Name" required/>
+<input type="text" id="authorlink" placeholder="Link to your Social Profile"/>
+<textarea type="text" id="about" placeholder="Enter Relevant Details" required></textarea>
+<input type="text" id="information_link" placeholder="Link for more Info"/>
+<input type="text" id="timeframe" placeholder="Timeframe"/>
+<input type="text" id="stipend" placeholder="Stipend"/>
+<input type="text" id="mail" placeholder="Mail ID" required/>
+<p>&nbsp;</p>
+<button onclick="send()">Send to Slack</button>
+<p>&nbsp;</p>
+<div id="result">&nbsp;</div>
+</div>
+<p>&nbsp;</p>
+</body>
+</html>
